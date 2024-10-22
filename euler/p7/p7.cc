@@ -6,7 +6,7 @@ using namespace std;
 
 int nthPrime(int nth){
 
-  int n = nth*nth;
+  int n = nth*(log(nth) + log(log(nth-1)));
   int nthPrime   ;
   
   vector<bool> primes( n , true);
@@ -25,6 +25,7 @@ int nthPrime(int nth){
       if (primes[p]) {
         count++ ;
       }
+      nthPrime = count;
       if (count == nth) {
         nthPrime = p;
         break;
@@ -35,9 +36,8 @@ int nthPrime(int nth){
 }
 
 
-int main(){
+int main(){       
   int  nth      = 10001;
   cout << nthPrime( nth ) << endl;
   return 0;
 }
-
